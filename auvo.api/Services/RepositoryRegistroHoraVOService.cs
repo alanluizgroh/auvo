@@ -26,7 +26,7 @@ namespace auvo.api.Services
         }
 
 
-        public async Task CreateAsync(RegistroHora registro) {
+        public async Task CreateAsync(Payroll registro) {
             var registroVO = _mapper.Map<RegistroHoraVO>(registro);
             await _collection.InsertOneAsync(registroVO);
         }

@@ -12,8 +12,8 @@ namespace auvo.app.Services
     {
         public static async Task<List<RegistroDePonto>> LerRegistros(FileInfo? arquivo)
         {
-         
 
+            
             var registros = new List<RegistroDePonto>();
 
             using (var reader = new StreamReader(arquivo.FullName))

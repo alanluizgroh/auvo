@@ -10,7 +10,7 @@ using MongoDB.Bson;
 
 namespace auvo.api.Data.ValueObjects
 {
-    public class RegistroHoraVO : RegistroHora
+    public class RegistroHoraVO : Payroll
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

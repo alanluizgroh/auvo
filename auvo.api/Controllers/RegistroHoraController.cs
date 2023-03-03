@@ -21,7 +21,7 @@ namespace auvo.api.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] RegistroHora value)
+        public async Task<IActionResult> Post([FromBody] Payroll value)
         {
             try
             {
