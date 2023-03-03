@@ -15,8 +15,8 @@ namespace auvo.api.Config
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                config.CreateMap<RegistroHoraVO, RegistroHora>();
-                config.CreateMap<RegistroHora, RegistroHoraVO>();
+                config.CreateMap<RegistroHoraVO, RegistroDePonto>();
+                config.CreateMap<RegistroDePonto, RegistroHoraVO>();
             });
             return mappingConfig;
         }

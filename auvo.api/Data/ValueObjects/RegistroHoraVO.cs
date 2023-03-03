@@ -10,14 +10,12 @@ using MongoDB.Bson;
 
 namespace auvo.api.Data.ValueObjects
 {
-    public class RegistroHoraVO : RegistroDePonto
+    public class RegistroHoraVO : RegistroHora
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
-        public RegistroHoraVO(int codigo, string nome, decimal valorHora, DateTime data, TimeSpan entrada, TimeSpan saida, TimeSpan almoco) : base(codigo, nome, valorHora, data, entrada, saida, almoco)
-        {
-        }
- 
+
+
     }
 }
