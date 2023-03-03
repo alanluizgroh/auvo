@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace auvo.model
 {
+    /// <summary>
+    /// A classe Funcionario contém os atributos que representam as informações de cada funcionário.
+    /// </summary>
     public class Funcionario : BaseEntity
     {
         public string Nome { get; set; } = "";

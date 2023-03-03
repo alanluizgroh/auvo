@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace auvo.model
 {
+    /// <summary>
+    ///  A classe RegistroHora contém os atributos que representam as informações de registro de hora. 
+    ///  Note que na classe RegistroHora, a propriedade Funcionarios é uma lista de Funcionario, 
+    ///  que representará os funcionários registrados em cada mês/ano.
+    /// </summary>
     public class RegistroHora : BaseEntity
     {
         public string Departamento { get; set; } = "";

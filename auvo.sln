@@ -16,6 +16,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "auvo.app", "auvo.app\auvo.app.csproj", "{F508D9CD-B12B-48E6-8C0A-8B3F474A6B63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Model", "Model", "{358D2E82-CF4B-4D9D-BB41-D8C03D062494}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "auvo.model", "auvo.model\auvo.model.csproj", "{25BD1496-8BAA-43DB-879F-AE22DBCE9A62}"
 EndProject
