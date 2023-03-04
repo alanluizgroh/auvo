@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\auvo.model\auvo.model.csproj" />
+    <ProjectReference Include="..\auvo.domain\auvo.domain.csproj" />
   </ItemGroup>
 
 </Project>

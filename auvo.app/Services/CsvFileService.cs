@@ -1,4 +1,5 @@
-﻿using auvo.model;
+﻿using auvo.domain;
+using auvo.model;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.Win32;
@@ -10,23 +11,28 @@ namespace auvo.app.Services
 {
     public class CsvFileService
     {
-        public static async Task<List<RegistroDePonto>> LerRegistros(FileInfo? arquivo)
+        public static async Task<List<TimekeepingRecord>> LerRegistros(FileInfo? arquivo)
         {
 
-            
-            var registros = new List<RegistroDePonto>();
+            var records = new List<TimekeepingRecord>();
 
             using (var reader = new StreamReader(arquivo.FullName))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
             {
-                csv.Context.RegisterClassMap<RegistroMap>();
-                registros = csv.GetRecords<RegistroDePonto>().ToList();
+                csv.Context.RegisterClassMap<CsvRecordMap>();
 
-                // Processar os registros aqui
+                var headers = csv.HeaderRecord;
+                var expectedHeaders = new[] { "Código", "Nome", "Valor hora", "Data", "Entrada", "Saída", "Almoço" };
+
+                if (headers.SequenceEqual(expectedHeaders))
+                {
+                    records = csv.GetRecords<TimekeepingRecord>().ToList();
+                }
             }
 
-
-            return registros;
+            return records;
         }
+
+
     }
 }
