@@ -11,13 +11,14 @@ namespace auvo.domain
         public int Code { get; }
         public string Name { get; }
         public double HourlyRate { get; }
-        public IEnumerable<Record> Records { get; }
+        public IEnumerable<Record> Records { get; set; }
 
         public Employee(string name, int code, double hourlyRate)
         {
             Name = name;
             Code = code;
             HourlyRate = hourlyRate;
+
         }
 
         public EmployeePay CalculatePay()

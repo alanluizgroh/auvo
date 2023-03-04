@@ -9,35 +9,52 @@ namespace auvo.domain
     public class Payroll
     {
 
-
         public Payroll()
         {
-            
         }
 
-        public void ExportToFile(string fileName)
+        public Department GeneratePayroll(List<TimekeepingRecord> timekeepingRecords, string departmentName, string month, string year)
         {
-            using (var writer = new StreamWriter(fileName))
+            var department = new Department(departmentName, month, year);
+            var employees = timekeepingRecords.Select(p => new Employee(p.Name, p.Code, p.HourlyRate)).Distinct().ToList();
+
+
+
+            foreach (var employee in employees)
             {
-                writer.WriteLine("Folha de Pagamento");
+                List<Record> records = new List<Record>();
 
-                writer.WriteLine($"Departamento: {Department.Name}");
-                writer.WriteLine($"Mês/Ano: {Month}/{Year}");
-
-                writer.WriteLine("Funcionário - Salário - Horas Extras - Descontos - Salário Líquido");
-
-                foreach (var employee in EmployeesPay)
+                foreach (TimekeepingRecord timekeepingRecord in timekeepingRecords.Where(p => p.Code == employee.Code))
                 {
-                    var employeePay = employee.CalculatePay();
-                    var netPay = employeePay.TotalToReceive - employeePay.TotalDiscounts;
+                    Record record = new Record();
 
-                    writer.WriteLine($"{employee.Name} - {employeePay.TotalToReceive.ToString("C")} - {employeePay.ExtraHours}h - {employeePay.TotalDiscounts.ToString("C")} - {netPay.ToString("C")}");
+                    // convert CheckIn and LunchBreak to DateTime
+                    DateTime checkInDateTime = timekeepingRecord.Date.Date + timekeepingRecord.CheckIn;
+                    DateTime lunchBreakEndDateTime = checkInDateTime.Add(timekeepingRecord.LunchBreak);
+
+                    // convert CheckOut to DateTime
+                    DateTime checkOutDateTime = timekeepingRecord.Date.Date + timekeepingRecord.CheckOut;
+
+                    record.StartTime = checkInDateTime;
+                    record.EndTime = checkOutDateTime;
+                    record.LunchHours = timekeepingRecord.LunchBreak.TotalHours;
+
+                    records.Add(record);
                 }
 
-                writer.WriteLine($"Total da folha de pagamento: {TotalPayroll.ToString("C")}");
-                writer.WriteLine($"Total de descontos: {TotalDiscounts.ToString("C")}");
-                writer.WriteLine($"Total de horas extras: {TotalExtraHours}h");
+                employee.Records = records;
+                var employeePay = employee.CalculatePay();
+                department.TotalPayroll += employeePay.TotalToReceive;
+                department.TotalDiscounts += employeePay.TotalDiscounts;
+                department.TotalExtraHours += employeePay.ExtraHours;
+
+
+                department.EmployeesPay.Add(employeePay);
             }
+
+            return department;
         }
+
+
     }
 }

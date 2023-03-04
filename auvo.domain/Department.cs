@@ -19,36 +19,14 @@ namespace auvo.domain
         public Department(string name, string month, string year)
         {
             Name = name;
-            Employees = new List<Employee>();
+            Month = month;
+            Year = year;
+            TotalPayroll = 0;
+            TotalDiscounts = 0;
+            TotalExtraHours = 0;
         }
 
 
-        public Payroll GeneratePayroll(string fileName)
-        {
-            var header = fileName.Split('-');
-
-            var payroll = new Payroll
-            {
-                Department = this,
-                Month = header[1],
-                Year = header[2],
-                TotalPayroll = 0,
-                TotalDiscounts = 0,
-                TotalExtraHours = 0
-            };
-
-            foreach (var employee in Employees)
-            {
-                var employeePay = employee.CalculatePay();
-                payroll.TotalPayroll += employeePay.TotalToReceive;
-                payroll.TotalDiscounts += employeePay.TotalDiscounts;
-                payroll.TotalExtraHours += employeePay.ExtraHours;
-
-               
-                payroll.EmployeesPay.Add(employeePay.Employee);
-            }
-
-            return payroll;
-        }
+      
     }
 }
