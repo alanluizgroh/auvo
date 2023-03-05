@@ -8,7 +8,7 @@ namespace auvo.domain
 {
     public class EmployeePay
     {
-        public Employee Employee { get; set; }
+        public string Name { get; set; }
         public int WorkedDays { get; set; }
         public int DaysOff { get; set; }
         public double TotalToReceive { get; set; }

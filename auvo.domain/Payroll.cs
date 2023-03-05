@@ -12,7 +12,8 @@ namespace auvo.domain
         public static Department GeneratePayroll(List<TimekeepingRecord> timekeepingRecords, string departmentName, string month, string year)
         {
             var department = new Department(departmentName, month, year);
-            var employees = timekeepingRecords.Select(p => new Employee(p.Name, p.Code, p.HourlyRate)).Distinct().ToList();
+            var employees = timekeepingRecords.GroupBy(r => new { r.Code, r.Name, r.HourlyRate })
+                            .Select(g => new Employee(g.Key.Name, g.Key.Code, (double)g.Key.HourlyRate)).ToList();
 
             foreach (var employee in employees)
             {

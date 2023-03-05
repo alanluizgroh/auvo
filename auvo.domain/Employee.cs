@@ -28,7 +28,7 @@ namespace auvo.domain
 
             var employeePay = new EmployeePay()
             {
-                Employee = this,
+                Name = this.Name,
                 TotalToReceive = CalculateTotalToReceive(),
                 TotalDiscounts = CalculateTotalDiscounts(),
                 ExtraHours = CalculateExtraHours(),

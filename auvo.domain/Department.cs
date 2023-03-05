@@ -24,6 +24,7 @@ namespace auvo.domain
             TotalPayroll = 0;
             TotalDiscounts = 0;
             TotalExtraHours = 0;
+            EmployeesPay = new List<EmployeePay>();
         }
 
 
