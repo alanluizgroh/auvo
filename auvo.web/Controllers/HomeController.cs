@@ -14,9 +14,6 @@ namespace auvo.web.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IAlvoApiClient _alvoApiClient;
 
-
-
-
         public HomeController(ILogger<HomeController> logger, IAlvoApiClient alvoApiClient)
         {
             _logger = logger;
@@ -45,18 +42,6 @@ namespace auvo.web.Controllers
                 // Get the departments from the alvo.api
                 var departments = await _alvoApiClient.GetDepartmentsAsync();
 
-                // Serialize the translated departments to JSON
-                var jsonSettings = new JsonSerializerSettings
-                {
-                    ContractResolver = new DefaultContractResolver
-                    {
-                        NamingStrategy = new PortugueseNamingStrategy()
-                    },
-                    Converters = new List<JsonConverter>
-                    {
-                        new PortugueseNamingStrategyConverter(new CamelCaseNamingStrategy())
-                    }
-                };
 
                 //var json = JsonConvert.SerializeObject(departments, jsonSettings);
                 var json = JsonConvert.SerializeObject(departments);

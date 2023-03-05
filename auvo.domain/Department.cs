@@ -10,7 +10,7 @@ namespace auvo.domain
     [JsonObject(MemberSerialization.OptIn)]
     public class Department
     {
-        [JsonProperty(PropertyName = "Departamento")]
+        [JsonProperty(PropertyName = "DepartmentName")]
         public string DepartmentName { get; set; }
 
         [JsonProperty(PropertyName = "Month")]

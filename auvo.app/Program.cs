@@ -41,7 +41,7 @@ namespace auvo.app
                 try
                 {
                     Console.WriteLine($"Processando arquivo: {arquivo.Name}");
-                    var tituloArquivo = arquivo.Name.Split('-');
+                    var tituloArquivo = arquivo.Replace(".csv","").Name.Split('-');
 
                     var records = CsvFileService.LerRegistros(arquivo).Result;
 
@@ -64,14 +64,9 @@ namespace auvo.app
             using var client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7031/");
 
-            var settings = new JsonSerializerSettings
-            {
-                ContractResolver = new IgnoreJsonPropertyContractResolver()
-            };
+      
 
-            var json = JsonConvert.SerializeObject(department, settings);
-
-            //var json = JsonConvert.SerializeObject(department);
+            var json = JsonConvert.SerializeObject(department);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client.PostAsync("api/payroll", content);
@@ -84,17 +79,6 @@ namespace auvo.app
         }
     }
 
-    public class IgnoreJsonPropertyContractResolver : DefaultContractResolver
-    {
-        protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
-        {
-            var properties = base.CreateProperties(type, memberSerialization);
-            foreach (var property in properties)
-            {
-                property.PropertyName = property.UnderlyingName; // use the original property name
-            }
-            return properties;
-        }
-    }
+  
 
 }
