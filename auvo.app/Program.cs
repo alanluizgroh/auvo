@@ -14,7 +14,7 @@ namespace auvo.app
     {
         static void Main(string[] args)
         {
-            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            CultureInfo.CurrentCulture = new CultureInfo("pt-BR");
 
             Console.Write("Informe o caminho da pasta: ");
             string pasta = Console.ReadLine() ?? "";

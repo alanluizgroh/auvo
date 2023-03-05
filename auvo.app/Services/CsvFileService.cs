@@ -5,6 +5,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 
 namespace auvo.app.Services
 {
@@ -14,20 +15,18 @@ namespace auvo.app.Services
         {
 
             var records = new List<TimekeepingRecord>();
+            var config = new CsvConfiguration(CultureInfo.CurrentCulture)
+            {
+                Encoding = Encoding.UTF8 // set the encoding to match your file
+            };
 
-            using (var reader = new StreamReader(arquivo.FullName))
-            using (var csv = new CsvReader(reader, CultureInfo.CurrentCulture))
+            using (var reader = new StreamReader(arquivo.FullName, Encoding.GetEncoding("iso-8859-1")))
+            using (var csv = new CsvReader(reader, config))
             {
                 csv.Context.RegisterClassMap<CsvRecordMap>();
+                
+                records = csv.GetRecords<TimekeepingRecord>().ToList();
 
-                var headers = csv.HeaderRecord;
-                var expectedHeaders = new[] { "Código", "Nome", "Valor hora", "Data", "Entrada", "Saída", "Almoço" };
-
-                if (headers.SequenceEqual(expectedHeaders))
-                {
-                    records = csv.GetRecords<TimekeepingRecord>().ToList();
-                    
-                }
             }
 
             return records;

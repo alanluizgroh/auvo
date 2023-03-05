@@ -15,6 +15,8 @@ namespace auvo.domain
         public TimeSpan CheckIn { get; set; }
         public TimeSpan CheckOut { get; set; }
         public TimeSpan LunchBreak { get; set; }
+
+        public TimekeepingRecord() { }
         public TimekeepingRecord(int code, string name, double hourlyRate, DateTime date, TimeSpan checkIn, TimeSpan checkOut, TimeSpan lunchBreak)
         {
             Code = code;
