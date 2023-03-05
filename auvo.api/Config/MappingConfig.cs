@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using auvo.api.Data.ValueObjects;
-using auvo.model;
+using auvo.domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +15,8 @@ namespace auvo.api.Config
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                config.CreateMap<RegistroHoraVO, RegistroDePonto>();
-                config.CreateMap<RegistroDePonto, RegistroHoraVO>();
+                config.CreateMap<PayrollVO, Payroll>();
+                config.CreateMap<Payroll, PayrollVO>();
             });
             return mappingConfig;
         }

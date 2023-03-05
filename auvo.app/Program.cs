@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using auvo.app.Services;
 using auvo.domain;
 using FileHelpers;
 using Newtonsoft.Json;
@@ -38,8 +39,16 @@ namespace auvo.app
                 {
                     Console.WriteLine($"Processando arquivo: {arquivo.Name}");
                     var tituloArquivo = arquivo.Name.Split('-');
-                    var payroll = new Payroll();
-                    Console.WriteLine($"Processando arquivo: {arquivo.Name}");
+
+                    var records = CsvFileService.LerRegistros(arquivo).Result;
+
+                    if (records != null)
+                    {
+                        var departmento = Payroll.GeneratePayroll(records, tituloArquivo[0], tituloArquivo[1], tituloArquivo[2]);
+
+                    }
+
+                    Console.WriteLine($"* Processamento do arquivo: {arquivo.Name} finalizado. *");
                 }
                 catch (Exception ex)
                 {

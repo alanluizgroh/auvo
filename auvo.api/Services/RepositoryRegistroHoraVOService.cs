@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using auvo.api.Config;
 using auvo.api.Data.ValueObjects;
-using auvo.model;
+using auvo.domain;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 

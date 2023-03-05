@@ -1,5 +1,4 @@
 ﻿using auvo.domain;
-using auvo.model;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.Win32;
@@ -27,6 +26,7 @@ namespace auvo.app.Services
                 if (headers.SequenceEqual(expectedHeaders))
                 {
                     records = csv.GetRecords<TimekeepingRecord>().ToList();
+                    
                 }
             }
 

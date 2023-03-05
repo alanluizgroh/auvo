@@ -9,11 +9,7 @@ namespace auvo.domain
     public class Payroll
     {
 
-        public Payroll()
-        {
-        }
-
-        public Department GeneratePayroll(List<TimekeepingRecord> timekeepingRecords, string departmentName, string month, string year)
+        public static Department GeneratePayroll(List<TimekeepingRecord> timekeepingRecords, string departmentName, string month, string year)
         {
             var department = new Department(departmentName, month, year);
             var employees = timekeepingRecords.Select(p => new Employee(p.Name, p.Code, p.HourlyRate)).Distinct().ToList();
