@@ -9,8 +9,13 @@ using MongoDB.Bson;
 
 namespace auvo.api.Data.ValueObjects
 {
-    public class PayrollVO : Payroll
+    public class DepartmentVO : Department
     {
+        public DepartmentVO() { }
+        public DepartmentVO(string name, string month, string year) : base(name, month, year)
+        {
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }

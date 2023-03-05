@@ -15,8 +15,8 @@ namespace auvo.api.Config
         {
             var mappingConfig = new MapperConfiguration(config =>
             {
-                config.CreateMap<PayrollVO, Payroll>();
-                config.CreateMap<Payroll, PayrollVO>();
+                config.CreateMap<DepartmentVO, Department>();
+                config.CreateMap<Department, DepartmentVO>();
             });
             return mappingConfig;
         }

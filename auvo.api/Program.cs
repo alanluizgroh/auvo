@@ -22,7 +22,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.Configure<StoreDatabaseSettings>(
     builder.Configuration.GetSection("StoreDatabase"));
 
-builder.Services.AddSingleton<RepositoryRegistroHoraVOService>();
+builder.Services.AddSingleton<RepositoryPayrollService>();
 
 var app = builder.Build();
 

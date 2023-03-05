@@ -14,7 +14,7 @@ namespace auvo.domain
         public double TotalPayroll { get; set; }
         public double TotalDiscounts { get; set; }
         public double TotalExtraHours { get; set; }
-        public IList<EmployeePay> EmployeesPay { get; private set; }
+        public IList<EmployeePay> EmployeesPay { get; set; }
 
         public Department(string name, string month, string year)
         {
@@ -27,7 +27,7 @@ namespace auvo.domain
             EmployeesPay = new List<EmployeePay>();
         }
 
+        public Department() { }
 
-      
     }
 }

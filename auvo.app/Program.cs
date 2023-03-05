@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using auvo.app.Services;
 using auvo.domain;
 using FileHelpers;
@@ -45,7 +46,7 @@ namespace auvo.app
                     if (records != null)
                     {
                         var departmento = Payroll.GeneratePayroll(records, tituloArquivo[0], tituloArquivo[1], tituloArquivo[2]);
-
+                        PostDepartment(departmento).Wait();
                     }
 
                     Console.WriteLine($"* Processamento do arquivo: {arquivo.Name} finalizado. *");
@@ -54,9 +55,26 @@ namespace auvo.app
                 {
                     Console.WriteLine($"Erro ao processar arquivo: {arquivo.Name}");
                 }
-
             });
         }
+        public static async Task PostDepartment(Department department)
+        {
+            using var client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:7031/");
+
+            var json = JsonConvert.SerializeObject(department);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync("api/payroll", content);
+            response.EnsureSuccessStatusCode();
+
+            Task.WaitAll(response.Content.ReadAsStringAsync());
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(responseContent);
+        }
     }
+
+
 
 }
