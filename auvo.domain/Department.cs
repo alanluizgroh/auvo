@@ -8,7 +8,7 @@ namespace auvo.domain
 {
     public class Department
     {
-        public string Name { get; set; }
+        public string DepartmentName { get; set; }
         public string Month { get; set; }
         public string Year { get; set; }
         public double TotalPayroll { get; set; }
@@ -18,7 +18,7 @@ namespace auvo.domain
 
         public Department(string name, string month, string year)
         {
-            Name = name;
+            DepartmentName = name;
             Month = month;
             Year = year;
             TotalPayroll = 0;
