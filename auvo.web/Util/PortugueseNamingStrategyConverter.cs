@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
+using auvo.domain;
 
 namespace auvo.web.Util
 {

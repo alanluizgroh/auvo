@@ -58,8 +58,8 @@ namespace auvo.web.Controllers
                     }
                 };
 
-                var json = JsonConvert.SerializeObject(departments, jsonSettings);
-
+                //var json = JsonConvert.SerializeObject(departments, jsonSettings);
+                var json = JsonConvert.SerializeObject(departments);
 
                 // Create a file download response with the JSON content
                 var fileContent = Encoding.UTF8.GetBytes(json);

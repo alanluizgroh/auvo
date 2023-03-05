@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using auvo.app.Services;
 using auvo.domain;
 using FileHelpers;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace auvo.app
 {
@@ -62,7 +64,14 @@ namespace auvo.app
             using var client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7031/");
 
-            var json = JsonConvert.SerializeObject(department);
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new IgnoreJsonPropertyContractResolver()
+            };
+
+            var json = JsonConvert.SerializeObject(department, settings);
+
+            //var json = JsonConvert.SerializeObject(department);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client.PostAsync("api/payroll", content);
@@ -75,6 +84,17 @@ namespace auvo.app
         }
     }
 
-
+    public class IgnoreJsonPropertyContractResolver : DefaultContractResolver
+    {
+        protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
+        {
+            var properties = base.CreateProperties(type, memberSerialization);
+            foreach (var property in properties)
+            {
+                property.PropertyName = property.UnderlyingName; // use the original property name
+            }
+            return properties;
+        }
+    }
 
 }

@@ -26,7 +26,8 @@ namespace auvo.api.Services
         }
 
 
-        public async Task CreateAsync(Department record) {
+        public async Task CreateAsync(Department record)
+        {
             var recordVO = _mapper.Map<DepartmentVO>(record);
             await _collection.InsertOneAsync(recordVO);
         }
@@ -34,8 +35,11 @@ namespace auvo.api.Services
 
         public async Task<List<Department>> GetAsync()
         {
+
             var departmentVOList = await _collection.Find(_ => true).ToListAsync();
             return _mapper.Map<List<Department>>(departmentVOList);
+
+
         }
 
 

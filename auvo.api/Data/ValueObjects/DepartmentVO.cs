@@ -12,7 +12,7 @@ namespace auvo.api.Data.ValueObjects
     public class DepartmentVO : Department
     {
         public DepartmentVO() { }
-        public DepartmentVO(string name, string month, string year) : base(name, month, year)
+        public DepartmentVO(string departmentName, string month, string year) : base(departmentName, month, year)
         {
         }
 
