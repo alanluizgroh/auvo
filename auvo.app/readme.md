@@ -1,4 +1,4 @@
-﻿#Programa de Processamento de Folha de Pagamento
+﻿# Programa de Processamento de Folha de Pagamento
 Este programa é uma aplicação console escrita em C# que lê arquivos CSV contendo informações de pagamento de funcionários, processa essas informações e envia os dados processados para uma API RESTful.
 
 O programa é executado em três etapas principais:
