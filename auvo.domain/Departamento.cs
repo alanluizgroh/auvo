@@ -7,33 +7,25 @@ using System.Threading.Tasks;
 
 namespace auvo.domain
 {
-    [JsonObject(MemberSerialization.OptIn)]
     public class Departamento
     {
-        [JsonProperty(PropertyName = "Departamento")]
-        public string Nome { get; set; }
+        public string DepartamentoNome { get; set; }
 
-        [JsonProperty(PropertyName = "MesVigencia")]
         public string MesVigencia { get; set; }
 
-        [JsonProperty(PropertyName = "AnoVigencia")]
         public string AnoVigencia { get; set; }
 
-        [JsonProperty(PropertyName = "TotalPagar")]
         public double TotalPagar { get; set; }
 
-        [JsonProperty(PropertyName = "TotalDescontos")]
         public double TotalDescontos { get; set; }
 
-        [JsonProperty(PropertyName = "TotalExtras")]
         public double TotalExtras { get; set; }
 
-        [JsonProperty(PropertyName = "Funcionarios")]
         public IList<Funcionario> Funcionarios { get; set; }
 
         public Departamento(string departmentName, string month, string year)
         {
-            Nome = departmentName;
+            DepartamentoNome = departmentName;
             MesVigencia = month;
             AnoVigencia = year;
             TotalPagar = 0;

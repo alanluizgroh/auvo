@@ -41,13 +41,13 @@ namespace auvo.app
                 try
                 {
                     Console.WriteLine($"Processando arquivo: {arquivo.Name}");
-                    var tituloArquivo = arquivo.Replace(".csv","").Name.Split('-');
+                    var tituloArquivo = arquivo.Name.Split('-');
 
                     var records = CsvFileService.LerRegistros(arquivo).Result;
 
                     if (records != null)
                     {
-                        var departmento = Pagamento.GerarPagamento(records, tituloArquivo[0], tituloArquivo[1], tituloArquivo[2]);
+                        var departmento = Pagamento.GerarPagamento(records, tituloArquivo[0], tituloArquivo[1], tituloArquivo[2].Replace(".csv", ""));
                         PostDepartment(departmento).Wait();
                     }
 
