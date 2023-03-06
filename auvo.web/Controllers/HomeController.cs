@@ -38,14 +38,11 @@ namespace auvo.web.Controllers
         {
             try
             {
-                // Get the departments from the alvo.api
+     
                 var departments = await _alvoApiClient.GetDepartmentsAsync();
 
-
-                //var json = JsonConvert.SerializeObject(departments, jsonSettings);
                 var json = JsonConvert.SerializeObject(departments);
 
-                // Create a file download response with the JSON content
                 var fileContent = Encoding.UTF8.GetBytes(json);
                 var contentType = "application/json";
                 var fileName = "departments.json";
@@ -53,7 +50,6 @@ namespace auvo.web.Controllers
             }
             catch (Exception ex)
             {
-                // Handle errors and log exceptions
                 _logger.LogError(ex, "Erro ao buscar Registros");
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }

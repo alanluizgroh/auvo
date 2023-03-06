@@ -58,6 +58,10 @@ namespace auvo.app
                     Console.WriteLine($"Erro ao processar arquivo: {arquivo.Name}");
                 }
             });
+
+            Console.WriteLine("Processamento finalizado.");
+            Console.WriteLine($"Os arquivos processados podem ser baixados em: https://localhost:7248/Home/Payroll");
+            Console.ReadLine();
         }
         public static async Task PostDepartment(Departamento department)
         {

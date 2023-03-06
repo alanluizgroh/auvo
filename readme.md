@@ -1,9 +1,14 @@
-O projeto "auvo.model" é uma biblioteca de classes em C# que define as entidades de dados utilizadas pela aplicação. Ele contém classes que representam os dados de funcionários e de registros de horas trabalhadas.
+#Auvo
+O Auvo é uma solução composta por cinco projetos:
 
-A classe "Funcionario" possui propriedades como nome, código, total a receber, horas extras, horas de débito, dias de falta, dias extras e dias trabalhados.
++ auvo.api: projeto responsável pela implementação da API RESTful que fornece dados de funcionários e departamentos. Foi construído com o framework ASP.NET Core e utiliza o MongoDbDriver para acesso aos dados.
 
-A classe "RegistroHora" possui propriedades como departamento, mês e ano de vigência, total a pagar, total de descontos e total de horas extras. Ela também possui uma lista de funcionários, representando os funcionários que tiveram seus registros de horas trabalhadas neste mês e ano de vigência.
++ auvo.app: projeto responsável pela implementação da lógica de negócio da aplicação. Utiliza o framework .NET e implementa interfaces para comunicação com a API RESTful e persistência de dados.
 
-Ambas as classes herdam de uma classe abstrata chamada "BaseEntity", que possui apenas uma propriedade de ID, que será utilizada para identificar cada registro no banco de dados.
++ auvo.domain: projeto responsável pela definição das entidades e modelos de negócio da aplicação. É um projeto .NET e é compartilhado entre a camada de aplicação e a camada de API.
 
-Em resumo, o projeto auvo.model define as classes de entidades de dados da aplicação e suas respectivas propriedades, que serão utilizadas para armazenar e manipular os dados da aplicação.
++ auvo.web: projeto responsável pela implementação da interface gráfica da aplicação web. Foi construído com o framework ASP.NET Core e utiliza o Razor para a construção das views.
+
++ auvo.test: projeto responsável pelos testes unitários da aplicação. Utiliza o framework xUnit para a escrita dos testes e implementa testes para a camada de aplicação e de API.
+
+### A arquitetura da solução segue o padrão de arquitetura em camadas, separando as responsabilidades em diferentes projetos e facilitando a manutenção e evolução do sistema.

@@ -9,7 +9,7 @@ namespace auvo.api.Services
 {
     public class RepositoryPayrollService
     {
-        private readonly IMongoCollection<DepartmentVO> _collection;
+        private readonly IMongoCollection<DepartamentoVO> _collection;
         private IMapper _mapper;
 
         public RepositoryPayrollService(IOptions<StoreDatabaseSettings> bookStoreDatabaseSettings, IMapper mapper)
@@ -22,13 +22,13 @@ namespace auvo.api.Services
             var mongoDatabase = mongoClient.GetDatabase(
                 bookStoreDatabaseSettings.Value.DatabaseName);
 
-            _collection = mongoDatabase.GetCollection<DepartmentVO>("Payroll");
+            _collection = mongoDatabase.GetCollection<DepartamentoVO>("Pagamento");
         }
 
 
         public async Task CreateAsync(Departamento record)
         {
-            var recordVO = _mapper.Map<DepartmentVO>(record);
+            var recordVO = _mapper.Map<DepartamentoVO>(record);
             await _collection.InsertOneAsync(recordVO);
         }
 
