@@ -4,6 +4,6 @@ namespace auvo.web.Services
 {
     public interface IAlvoApiClient
     {
-        Task<List<Department>> GetDepartmentsAsync();
+        Task<List<Departamento>> GetDepartmentsAsync();
     }
 }

@@ -9,7 +9,7 @@ using MongoDB.Bson;
 
 namespace auvo.api.Data.ValueObjects
 {
-    public class DepartmentVO : Department
+    public class DepartmentVO : Departamento
     {
         public DepartmentVO() { }
         public DepartmentVO(string departmentName, string month, string year) : base(departmentName, month, year)

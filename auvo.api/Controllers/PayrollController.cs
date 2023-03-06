@@ -35,7 +35,7 @@ namespace auvo.api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Department value)
+        public async Task<IActionResult> Post([FromBody] Departamento value)
         {
             try
             {

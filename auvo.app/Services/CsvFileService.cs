@@ -11,10 +11,10 @@ namespace auvo.app.Services
 {
     public class CsvFileService
     {
-        public static async Task<List<TimekeepingRecord>> LerRegistros(FileInfo? arquivo)
+        public static async Task<List<RegistroPonto>> LerRegistros(FileInfo? arquivo)
         {
 
-            var records = new List<TimekeepingRecord>();
+            var records = new List<RegistroPonto>();
             var config = new CsvConfiguration(CultureInfo.CurrentCulture)
             {
                 Encoding = Encoding.UTF8 // set the encoding to match your file
@@ -25,7 +25,7 @@ namespace auvo.app.Services
             {
                 csv.Context.RegisterClassMap<CsvRecordMap>();
                 
-                records = csv.GetRecords<TimekeepingRecord>().ToList();
+                records = csv.GetRecords<RegistroPonto>().ToList();
 
             }
 

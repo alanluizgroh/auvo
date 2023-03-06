@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{0A2DC4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "auvo.domain", "auvo.domain\auvo.domain.csproj", "{13376EBF-EE2D-4A7A-9247-50A71721FD05}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{3E5BA8D6-7922-4165-99D5-96BB01814F9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "auvo.test", "auvo.test\auvo.test.csproj", "{88F8CE9C-C086-4196-A41D-881CB3BC489C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,10 @@ Global
 		{13376EBF-EE2D-4A7A-9247-50A71721FD05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13376EBF-EE2D-4A7A-9247-50A71721FD05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13376EBF-EE2D-4A7A-9247-50A71721FD05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88F8CE9C-C086-4196-A41D-881CB3BC489C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F8CE9C-C086-4196-A41D-881CB3BC489C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88F8CE9C-C086-4196-A41D-881CB3BC489C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88F8CE9C-C086-4196-A41D-881CB3BC489C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +58,7 @@ Global
 		{F508D9CD-B12B-48E6-8C0A-8B3F474A6B63} = {385AC468-CEA6-4713-8F49-7E16E9B9295C}
 		{18BE88C5-ECDC-4493-A462-54FF5C95FFD2} = {ED15CB01-7C99-4559-85F7-8D82DC6DF9BA}
 		{13376EBF-EE2D-4A7A-9247-50A71721FD05} = {0A2DC45F-3861-49E8-821E-69A8AEA2347C}
+		{88F8CE9C-C086-4196-A41D-881CB3BC489C} = {3E5BA8D6-7922-4165-99D5-96BB01814F9A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A217A11-704A-407B-A2E9-12755F417040}

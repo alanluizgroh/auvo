@@ -47,7 +47,7 @@ namespace auvo.app
 
                     if (records != null)
                     {
-                        var departmento = Payroll.GeneratePayroll(records, tituloArquivo[0], tituloArquivo[1], tituloArquivo[2]);
+                        var departmento = Pagamento.GerarPagamento(records, tituloArquivo[0], tituloArquivo[1], tituloArquivo[2]);
                         PostDepartment(departmento).Wait();
                     }
 
@@ -59,7 +59,7 @@ namespace auvo.app
                 }
             });
         }
-        public static async Task PostDepartment(Department department)
+        public static async Task PostDepartment(Departamento department)
         {
             using var client = new HttpClient();
             client.BaseAddress = new Uri("https://localhost:7031/");

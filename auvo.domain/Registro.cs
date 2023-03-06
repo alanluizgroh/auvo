@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace auvo.domain
 {
-    public class Record
+    public class Registro
     {
-        public DateTime? StartTime { get; set; }
-        public DateTime? EndTime { get; set; }
-        public double LunchHours { get; set; }
+        public DateTime? Inicio { get; set; }
+        public DateTime? Fim { get; set; }
+        public double AlmocoHoras { get; set; }
     }
 }
